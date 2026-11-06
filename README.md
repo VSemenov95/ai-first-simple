@@ -8,7 +8,7 @@
 
 `index.html` — форма логина. Валидные креды: `admin` / `admin123`.
 Страница опубликована на GitHub Pages:
-https://svasenkov.github.io/ai-first-simple/index.html — тесты
+https://vsemenov95.github.io/ai-first-simple/index.html — тесты
 открывают именно её.
 
 ## Тесты

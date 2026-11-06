@@ -2,7 +2,9 @@
 
 ## Где лежат тесты и конфиг?
 
-Тесты — в `src/test/java/qa/aifirst/` (`TestBase.java`, `LoginTest.java`).
+Тесты — в `src/test/java/qa/aifirst/`: `TestBase.java`,
+`LoginTest.java` (успешный вход, чекбокс «Запомнить меня»),
+`LoginNegativeTest.java` (неверная пара, пустые поля; ADR-0007).
 Версии стека (Java, JUnit, Selenide, Allure) — в `build.gradle`
 (`toolchain` и `dependencies`), здесь не дублируются.
 
@@ -21,9 +23,9 @@
 
 ## Откуда тест берёт страницу?
 
-`open("https://svasenkov.github.io/ai-first-simple/index.html")` —
+`open("https://vsemenov95.github.io/ai-first-simple/index.html")` —
 тест открывает форму, опубликованную на GitHub Pages из `main`
-(ADR-0006). Локальные правки `index.html` прогон не увидит, пока
+(ADR-0006, URL форка — ADR-0008). Локальные правки `index.html` прогон не увидит, пока
 они не уехали в `main` и Pages не перевыложил страницу.
 
 ## Как выглядят шаги теста?
@@ -33,7 +35,7 @@ Selenide-стиль: `$("css")` находит элемент, `.setValue()/.cli
 из `LoginTest.successfulLogin`:
 
 ```java
-open("https://svasenkov.github.io/ai-first-simple/index.html");
+open("https://vsemenov95.github.io/ai-first-simple/index.html");
 $("#username").setValue("admin");
 $("#password").setValue("admin123");
 $("button[type=submit]").click();
@@ -41,7 +43,16 @@ $("#message").shouldHave(text("Вход выполнен успешно"));
 ```
 
 Локаторы и тексты берутся из `index.html` (`#username`, `#password`,
-`button[type=submit]`, `#message`), валидные креды — `admin`/`admin123`.
+`#remember`, `button[type=submit]`, `#message`), валидные креды —
+`admin`/`admin123`. Ошибки проверяются по тексту и классу:
+`$("#message").shouldHave(exactText("Введите пароль"), cssClass("error"))`.
+Пустое поле — просто не заполнять его; пустая строка в `@CsvSource` — `''`.
+
+## Почему на Windows падают сравнения русского текста?
+
+javac читает исходники в кодировке ОС (cp1251) и портит строки.
+Лечится `JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8` и пересборкой
+тестов (`./gradlew cleanCompileTestJava test`). На CI (Linux) проблемы нет.
 
 ## Где ожидания? Почему нет sleep/wait?
 
