@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 class LoginNegativeTest extends TestBase {
 
-    private static final String PAGE_URL = "https://svasenkov.github.io/ai-first-simple/index.html";
+    private static final String PAGE_URL = "https://vsemenov95.github.io/ai-first-simple/index.html";
     private static final String ERROR_TEXT = "Неверное имя пользователя или пароль";
 
     @ParameterizedTest(name = "Неверная пара: логин «{0}», пароль «{1}» → сообщение об ошибке")

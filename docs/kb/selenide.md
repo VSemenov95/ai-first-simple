@@ -23,9 +23,9 @@
 
 ## Откуда тест берёт страницу?
 
-`open("https://svasenkov.github.io/ai-first-simple/index.html")` —
+`open("https://vsemenov95.github.io/ai-first-simple/index.html")` —
 тест открывает форму, опубликованную на GitHub Pages из `main`
-(ADR-0006). Локальные правки `index.html` прогон не увидит, пока
+(ADR-0006, URL форка — ADR-0008). Локальные правки `index.html` прогон не увидит, пока
 они не уехали в `main` и Pages не перевыложил страницу.
 
 ## Как выглядят шаги теста?
@@ -35,7 +35,7 @@ Selenide-стиль: `$("css")` находит элемент, `.setValue()/.cli
 из `LoginTest.successfulLogin`:
 
 ```java
-open("https://svasenkov.github.io/ai-first-simple/index.html");
+open("https://vsemenov95.github.io/ai-first-simple/index.html");
 $("#username").setValue("admin");
 $("#password").setValue("admin123");
 $("button[type=submit]").click();
