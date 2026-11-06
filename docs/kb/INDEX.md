@@ -6,7 +6,7 @@
 
 | Файл | Какие вопросы покрывает |
 | --- | --- |
-| [selenide.md](selenide.md) | Как устроены UI-тесты: TestBase, headless, `open()` на GitHub Pages, `$`/`shouldHave`, где ожидания, где конфиг Selenide и версии |
+| [selenide.md](selenide.md) | Как устроены UI-тесты: TestBase, headless, `open()` на GitHub Pages, `$`/`shouldHave`, проверка ошибок формы и пустых полей, UTF-8 на Windows, где ожидания, где конфиг Selenide и версии |
 | [github-actions.md](github-actions.md) | Как устроен `ci.yml`: триггеры, шаги job `test`, pinned-экшены по SHA, версия Allure CLI, артефакт `allure-report`, бейдж, где логи |
 | [allure.md](allure.md) | Результаты vs отчёт: `build/allure-results` vs `build/allure-report`, `allure serve` vs `allure generate`, лисенер allure-selenide и скриншоты при падении |
 | [jenkins.md](jenkins.md) | Зачем Jenkins в этом репо (фаза 7), готовый сервер jenkins.qa.guru (локально поднимать не нужно), какие плагины нужны (Pipeline, Allure) |

@@ -23,6 +23,11 @@
     <label for="password">Пароль</label>
     <input id="password" name="password" type="password" autocomplete="current-password">
 
+    <label for="remember" style="display: flex; align-items: center; gap: 8px;">
+      <input id="remember" name="remember" type="checkbox" style="width: auto;">
+      Запомнить меня
+    </label>
+
     <button type="submit">Войти</button>
   </form>
 
@@ -36,7 +41,16 @@
       var password = document.getElementById('password').value;
       var message = document.getElementById('message');
 
-      if (username === 'admin' && password === 'admin123') {
+      if (username === '' && password === '') {
+        message.textContent = 'Введите имя пользователя и пароль';
+        message.className = 'error';
+      } else if (username === '') {
+        message.textContent = 'Введите имя пользователя';
+        message.className = 'error';
+      } else if (password === '') {
+        message.textContent = 'Введите пароль';
+        message.className = 'error';
+      } else if (username === 'admin' && password === 'admin123') {
         message.textContent = 'Вход выполнен успешно';
         message.className = 'success';
       } else {
